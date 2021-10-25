@@ -23,4 +23,8 @@ public class Application {
    + 9. Spring boot
    + 10. n-tier архітектура
    + 11. use case - діаграми
+
+
+   DTO
+   finish with users
  */

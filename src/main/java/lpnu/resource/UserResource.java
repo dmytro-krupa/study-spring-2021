@@ -1,26 +1,16 @@
 package lpnu.resource;
 
-import lpnu.entity.User;
+import lpnu.dto.UserDTO;
 import lpnu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/*
-
-    Controller / RestController
-
-    Service
-
-    Repository
-
-    Component
-
- */
-
-
-@RestController
+@RestController()
 public class UserResource {
 
     @Autowired
@@ -28,39 +18,68 @@ public class UserResource {
 
 
     @GetMapping("/users")
-    public List<User> getAllUsers(){
-
-
-
-        final User user1 = new User(1,"name1", "surname1","email1");
-        final User user2 = new User(2,"name2", "surname2","email2");
-
-        return List.of(user1, user2);
+    public List<UserDTO> getAllUsers() {
+        return userService.getAllUsers();
     }
 
-    @GetMapping("/users/{id}/{email}")
-    public User getUserById(@PathVariable long id, @PathVariable String email){
-
-        final User user1 = new User(1,"name1", "surname1","email1");
-        final User user2 = new User(2,"name2", "surname2","email2");
-
-        return List.of(user1, user2).stream()
-                .filter(e -> e.getId() == id)
-                .findFirst()
-                .orElse(null);
+    @GetMapping("/users/{id}")
+    public UserDTO getUserById(@PathVariable final long id) {
+        return userService.getUserById(id);
     }
 
 
     @PostMapping("/users")
-    public User saveUser(@RequestBody User user){
-        user.setId(10);
+    public UserDTO saveUser(@RequestBody final UserDTO userDTO) {
+        if (userDTO.getId() != null) {
 
-        return user;
+            System.out.println("Can't save user with ID : {"+ userDTO.getId() + "}. User will be updated");
+
+            return userService.updateUser(userDTO);
+        }
+
+        return userService.saveUser(userDTO);
+    }
+
+    //todo  test it
+
+    @PutMapping("/users")
+    public UserDTO updateUser(@RequestBody final UserDTO userDTO) {
+        if (userDTO.getId() == null) {
+            saveUser(userDTO);
+        }
+
+        return userService.updateUser(userDTO);
+    }
+
+    //todo  test it
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity deleteUserById(@RequestBody final long id) {
+        userService.deleteUserById(id);
+        return ResponseEntity.ok().build();
     }
 }
 
+
+
+
+
+
+
 /*
 Postman
+
+    500 - проблема сервера, погано написаний код. Наприклад впав NullPointer
+
+    200 - OK
+    201 - created - об'єкт був створений
+
+
+    400 - Bad request   - юзер прислав погані дані
+    401 - Unauthorized  - не залогінилися але хоче щось зробити
+    403 - Forbidden     - не залогінилися але хоче щось зробити. Але навіть якщо залогінитеся то не маєте права нічого робити
+    404 - page not found / resource not found
+
 
     GET - отримати один або багато ресурсів
 
