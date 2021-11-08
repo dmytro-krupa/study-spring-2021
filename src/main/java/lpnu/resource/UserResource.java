@@ -3,14 +3,13 @@ package lpnu.resource;
 import lpnu.dto.UserDTO;
 import lpnu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@RestController()
+@RestController
+@RequestMapping("/api/v1")
 public class UserResource {
 
     @Autowired
@@ -30,31 +29,18 @@ public class UserResource {
 
     @PostMapping("/users")
     public UserDTO saveUser(@RequestBody final UserDTO userDTO) {
-        if (userDTO.getId() != null) {
-
-            System.out.println("Can't save user with ID : {"+ userDTO.getId() + "}. User will be updated");
-
-            return userService.updateUser(userDTO);
-        }
-
         return userService.saveUser(userDTO);
     }
 
-    //todo  test it
 
     @PutMapping("/users")
     public UserDTO updateUser(@RequestBody final UserDTO userDTO) {
-        if (userDTO.getId() == null) {
-            saveUser(userDTO);
-        }
-
         return userService.updateUser(userDTO);
     }
 
-    //todo  test it
 
     @DeleteMapping("/users/{id}")
-    public ResponseEntity deleteUserById(@RequestBody final long id) {
+    public ResponseEntity deleteUserById(@PathVariable final long id) {
         userService.deleteUserById(id);
         return ResponseEntity.ok().build();
     }

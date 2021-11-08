@@ -2,6 +2,7 @@ package lpnu.repository;
 
 import lpnu.dto.UserDTO;
 import lpnu.entity.User;
+import lpnu.exception.ServiceException;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -29,7 +30,7 @@ public class UserRepository {
         return users.stream()
                 .filter(e -> e.getId() == id)
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new ServiceException(400, "user with id {" + id + "} not found"));
     }
 
     public User saveUser(final User user) {
