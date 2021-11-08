@@ -15,10 +15,12 @@ public class Application {
  1.11 - дописати та потестити юзера +
 
  8.11 - custom exception handler +
+ 8.11 - spring validation
 
  8.11 - робота оператора
  8.11 - купівля товарів
 
+ 15.11 - Lombok
 
  */
 

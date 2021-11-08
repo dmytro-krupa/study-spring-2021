@@ -16,25 +16,8 @@ public class RestResponseEntityExceptionHandler {
 
 
 
-
-    /*
-
-            AOP
-
-
-     */
-
-
-
-
-
-
-
-
-
-    //
-//    @ExceptionHandler(value = MethodArgumentNotValidException.class )
-//    public ResponseEntity<Object> handleServiceException(final MethodArgumentNotValidException ex) {
-//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ServiceExceptionDTO(400, ex.getMessage(), null));
-//    }
+    @ExceptionHandler(value = MethodArgumentNotValidException.class )
+    public ResponseEntity<Object> handleServiceException(final MethodArgumentNotValidException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ServiceExceptionDTO(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), null));
+    }
 }

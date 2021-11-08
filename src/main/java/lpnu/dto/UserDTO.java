@@ -1,11 +1,18 @@
 package lpnu.dto;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 public class UserDTO {
     private Long id;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String surname;
+
+    @NotBlank
     private String email;
 
     public UserDTO() {

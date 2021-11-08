@@ -4,6 +4,7 @@ import lpnu.dto.UserDTO;
 import lpnu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,13 +29,13 @@ public class UserResource {
 
 
     @PostMapping("/users")
-    public UserDTO saveUser(@RequestBody final UserDTO userDTO) {
+    public UserDTO saveUser(@RequestBody @Validated final UserDTO userDTO) {
         return userService.saveUser(userDTO);
     }
 
 
     @PutMapping("/users")
-    public UserDTO updateUser(@RequestBody final UserDTO userDTO) {
+    public UserDTO updateUser(@RequestBody @Validated final UserDTO userDTO) {
         return userService.updateUser(userDTO);
     }
 
