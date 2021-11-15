@@ -12,16 +12,45 @@ public class Application {
 
 
 /*
- 1.11 - дописати та потестити юзера +
+ 1.11 - дописати та потестити юзера
 
- 8.11 - custom exception handler +
+ 8.11 - custom exception handler
  8.11 - spring validation
 
  8.11 - робота оператора
- 8.11 - купівля товарів
+ 8.11 - купівля палива
 
  15.11 - Lombok
+ 15.11 - оцінка часу та декомпозиція задач
+ 15.11 - збереження даних у файл
 
+
+
+ backlog:
+  - base unit tests
+  - base integration tests
+  - base git commands
+  - створення бібліотеки
+  - купівля товарів
+  - замовлення палива
+  - створення чеку
+  - пропонування товарів
+  - картки знижок (іт-клаб)
+  - розгортання проекту
+  - заповнити README.md
+  - jMeter
+  - email
+  - custom validation annotation
+
+
+
+
+
+        final Integer mark = m.get(id);
+
+        if (mark == null) {
+            return 0;
+        }
  */
 
 /*
