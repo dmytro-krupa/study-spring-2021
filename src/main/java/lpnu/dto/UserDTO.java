@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Data
@@ -18,6 +19,8 @@ public class UserDTO {
     @NotBlank
     private String surname;
 
+    @Email
     @NotBlank
     private String email;
+
 }

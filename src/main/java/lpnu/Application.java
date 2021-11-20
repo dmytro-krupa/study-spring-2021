@@ -23,15 +23,23 @@ public class Application {
  15.11 - Lombok
  15.11 - оцінка часу та декомпозиція задач
  15.11 - збереження даних у файл
+ 15.11 - робота з пальним
 
+ 22.11 - основи Agile/Scrum/Kanban
+ 22.11 - custom validation annotation
+ 22.11 - email
+ 22.11 - купівля товарів
+
+ 29.11 - base unit tests
+ 29.11 - base integration tests
+ 29.11
 
 
  backlog:
-  - base unit tests
-  - base integration tests
+
+
   - base git commands
   - створення бібліотеки
-  - купівля товарів
   - замовлення палива
   - створення чеку
   - пропонування товарів
@@ -39,18 +47,26 @@ public class Application {
   - розгортання проекту
   - заповнити README.md
   - jMeter
-  - email
-  - custom validation annotation
+  - validate PathVariables and RequestParams
 
 
 
 
 
-        final Integer mark = m.get(id);
+        final Integer mark = m.get(id); null або 0-100
 
         if (mark == null) {
             return 0;
         }
+
+        return mark;
+
+
+
+
+
+
+
  */
 
 /*
@@ -66,6 +82,11 @@ public class Application {
    + 10. n-tier архітектура
    + 11. use case - діаграми
 
+    in cmd -> netstat - покаже усі зайняті порти
+
+    ubuntu:
+        netstat -tulpn
+        kill -9 process_id
 
    DTO
    finish with users

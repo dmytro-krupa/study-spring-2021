@@ -14,5 +14,4 @@ public class ManagerFuelDTO {
     private Double priceSell;
     private Double priceBuy;
     private FuelState fuelState;
-
 }

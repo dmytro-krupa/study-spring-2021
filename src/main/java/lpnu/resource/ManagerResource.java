@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController
@@ -29,8 +30,15 @@ public class ManagerResource {
     }
 
     @GetMapping("/manager/approve/{fuelId}")
-    public ResponseEntity getAllFuel(final @PathVariable Long fuelId) {
+    public ResponseEntity approveFuelById(final @PathVariable Long fuelId) {
         managerService.approve(fuelId);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("/manager/deactivate/{fuelId}")
+    public ResponseEntity deactivateFuel(final @PathVariable Long fuelId) {
+        managerService.deactivate(fuelId);
 
         return ResponseEntity.status(HttpStatus.OK).build();
     }
