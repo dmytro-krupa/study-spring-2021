@@ -54,43 +54,43 @@ public class ItemRepository {
     //todo FINISH!!!!!!!
 
 
-
-
-
-    public List<User> getAllUsers() {
-        return new ArrayList<>(users);
-    }
-
-    public User getUserById(final long id) {
-        return users.stream()
-                .filter(e -> e.getId() == id)
-                .findFirst()
-                .orElseThrow(() -> new ServiceException(400, "user with id {" + id + "} not found"));
-    }
-
-    public User saveUser(final User user) {
-        user.setId(id);
-
-        ++id;
-
-        users.add(user);
-        return user;
-    }
-
-    public User updateUser(final User user) {
-
-        final User savedUser = getUserById(user.getId());
-
-        savedUser.setName(user.getName());
-        savedUser.setSurname(user.getSurname());
-        savedUser.setEmail(user.getEmail());
-
-        return savedUser;
-    }
-
-    public void deleteUserById(final long id) {
-        users = users.stream()
-                .filter(e -> e.getId() != id)
-                .collect(Collectors.toList());
-    }
+//
+//
+//
+//    public List<User> getAllUsers() {
+//        return new ArrayList<>(users);
+//    }
+//
+//    public User getUserById(final long id) {
+//        return users.stream()
+//                .filter(e -> e.getId() == id)
+//                .findFirst()
+//                .orElseThrow(() -> new ServiceException(400, "user with id {" + id + "} not found"));
+//    }
+//
+//    public User saveUser(final User user) {
+//        user.setId(id);
+//
+//        ++id;
+//
+//        users.add(user);
+//        return user;
+//    }
+//
+//    public User updateUser(final User user) {
+//
+//        final User savedUser = getUserById(user.getId());
+//
+//        savedUser.setName(user.getName());
+//        savedUser.setSurname(user.getSurname());
+//        savedUser.setEmail(user.getEmail());
+//
+//        return savedUser;
+//    }
+//
+//    public void deleteUserById(final long id) {
+//        users = users.stream()
+//                .filter(e -> e.getId() != id)
+//                .collect(Collectors.toList());
+//    }
 }

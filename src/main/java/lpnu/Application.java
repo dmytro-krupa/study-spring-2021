@@ -27,12 +27,17 @@ public class Application {
 
  22.11 - основи Agile/Scrum/Kanban
  22.11 - custom validation annotation
- 22.11 - email
+ 22.11 - email - надіслати туторіал
  22.11 - купівля товарів
 
  29.11 - base unit tests
  29.11 - base integration tests
  29.11
+
+ 6.12 - консультація
+ 6.12 - паттерни
+ 6.12 - jMeter
+ 6.12 - розгортання проекту
 
 
  backlog:
@@ -44,29 +49,8 @@ public class Application {
   - створення чеку
   - пропонування товарів
   - картки знижок (іт-клаб)
-  - розгортання проекту
   - заповнити README.md
-  - jMeter
   - validate PathVariables and RequestParams
-
-
-
-
-
-        final Integer mark = m.get(id); null або 0-100
-
-        if (mark == null) {
-            return 0;
-        }
-
-        return mark;
-
-
-
-
-
-
-
  */
 
 /*
