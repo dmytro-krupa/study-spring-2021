@@ -14,6 +14,7 @@ public class UserToUserDTOMapper {
         user.setEmail(userDTO.getEmail());
         user.setName(userDTO.getName());
         user.setSurname(userDTO.getSurname());
+        user.setRole(userDTO.getRole());
 
 
 
@@ -28,6 +29,7 @@ public class UserToUserDTOMapper {
         userDTO.setEmail(user.getEmail());
         userDTO.setName(user.getName());
         userDTO.setSurname(user.getSurname());
+        userDTO.setRole(user.getRole());
 
         return userDTO;
     }
