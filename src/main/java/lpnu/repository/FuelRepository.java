@@ -2,6 +2,7 @@ package lpnu.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import lpnu.entity.Fuel;
+import lpnu.entity.User;
 import lpnu.entity.enumeration.FuelState;
 import lpnu.exception.ServiceException;
 import lpnu.util.JacksonUtil;
@@ -31,6 +32,16 @@ public class FuelRepository {
         try {
             final String savedFuelsAsString = Files.readString(file, StandardCharsets.UTF_16);
             fuelList = JacksonUtil.deserialize(savedFuelsAsString, new TypeReference<List<Fuel>>() {});
+
+            if (fuelList == null) {
+                fuelList = new ArrayList<>();
+                return;
+            }
+
+            final long maxId = fuelList.stream().mapToLong(Fuel::getId).max().orElse(1);
+
+            this.id = maxId + 1;
+
         } catch (final Exception e){
             System.out.println("We have an issue");
             fuelList = new ArrayList<>();

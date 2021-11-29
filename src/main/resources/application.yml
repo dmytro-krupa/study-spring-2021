@@ -1,4 +1,6 @@
 server:
   port: 8080
 
+limit: 5
+
 #server.port = 8080

@@ -2,6 +2,7 @@ package lpnu.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import lpnu.dto.UserDTO;
+import lpnu.entity.Item;
 import lpnu.entity.User;
 import lpnu.exception.ServiceException;
 import lpnu.util.JacksonUtil;
@@ -33,6 +34,17 @@ public class UserRepository {
         try {
             final String savedUsersAsString = Files.readString(file, StandardCharsets.UTF_16);
             users = JacksonUtil.deserialize(savedUsersAsString, new TypeReference<List<User>>() {});
+
+
+            if (users == null) {
+                users = new ArrayList<>();
+                return;
+            }
+
+            final long maxId = users.stream().mapToLong(User::getId).max().orElse(1);
+
+            this.id = maxId + 1;
+
         } catch (final Exception e){
             System.out.println("We have an issue");
             users = new ArrayList<>();
@@ -85,5 +97,9 @@ public class UserRepository {
         users = users.stream()
                 .filter(e -> e.getId() != id)
                 .collect(Collectors.toList());
+    }
+
+    public int count(){
+        return users.size();
     }
 }
