@@ -34,10 +34,13 @@ public class Application {
  29.11 - base integration tests
  29.11
 
+    доробити:   orderserviceimpl - get best item і юніт тести для того
+                скинути туторіал по Hamcrest
+                скинути "прибирання після int тестів"
+
  6.12 - консультація
  6.12 - паттерни
  6.12 - jMeter
- 6.12 - розгортання проекту
 
 
  backlog:
